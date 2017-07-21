@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-class ListBooks extends React.Component {
+class ListBooks extends Component {
   booksOnShelf = (shelf) => {
     return this.props.books.filter(book => {
       return book.shelf === shelf;
@@ -24,7 +24,7 @@ class ListBooks extends React.Component {
                      <li key={book.id}>
                        <div className="book">
                          <div className="book-top">
-                           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: "url(" + book.imageURL + ")" }}></div>
+                           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: "url(" + book.imageLinks.smallThumbnail + ")" }}></div>
                            <div className="book-shelf-changer">
                              <select>
                                <option value="none" disabled>Move to...</option>
@@ -51,7 +51,7 @@ class ListBooks extends React.Component {
                      <li key={book.id}>
                        <div className="book">
                          <div className="book-top">
-                           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: "url(" + book.imageURL + ")" }}></div>
+                           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: "url(" + book.imageLinks.smallThumbnail + ")" }}></div>
                            <div className="book-shelf-changer">
                              <select>
                                <option value="none" disabled>Move to...</option>
@@ -78,7 +78,7 @@ class ListBooks extends React.Component {
                      <li key={book.id}>
                        <div className="book">
                          <div className="book-top">
-                           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: "url(" + book.imageURL + ")" }}></div>
+                           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: "url(" + book.imageLinks.smallThumbnail + ")" }}></div>
                            <div className="book-shelf-changer">
                              <select>
                                <option value="none" disabled>Move to...</option>
