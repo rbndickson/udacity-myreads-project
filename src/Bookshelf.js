@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import Book from './Book'
+import PropTypes from 'prop-types'
 
 class Bookshelf extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
+  }
+
   booksOnShelf = (shelf) => {
     return this.props.books.filter(book => {
       return book.shelf === shelf;
