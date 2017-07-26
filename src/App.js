@@ -18,17 +18,37 @@ class BooksApp extends React.Component {
   }
 
   updateBook(book, shelf) {
+    if (shelf === 'none') {
+      this.removeBook(book)
+    } else if (!this.state.books.includes(book)) {
+      this.addBook(book, shelf)
+    } else {
+      this.changeShelf(book, shelf)
+    }
+
+    BooksAPI.update(book, shelf)
+  }
+
+  changeShelf(book, shelf) {
     this.setState(state => ({
       books: state.books.map((b) => {
-        if (b.id === book.id) {
-          book.shelf = shelf;
-          return book;
-        } else  {
-          return b;
-        }
+        if (b.id === book.id) { b.shelf = shelf; }
+        return b;
       })
     }))
-    BooksAPI.update(book, shelf)
+  }
+
+  addBook(book, shelf) {
+    book.shelf = shelf;
+    this.setState(state => ({
+      books: state.books.concat([ book ])
+    }))
+  }
+
+  removeBook(book) {
+    this.setState((state) => ({
+      books: state.books.filter((b) => b.id !== book.id)
+    }))
   }
 
   render() {
