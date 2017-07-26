@@ -26,6 +26,23 @@ class SearchResults extends React.Component {
     })
   }
 
+  userShelf(id) {
+    let userShelf = 'none';
+
+    this.props.userBooks.forEach((userBook) => {
+      if (userBook.id === id) {
+        userShelf = userBook.shelf;
+      }
+    });
+
+    return userShelf;
+  }
+
+  updateToCorrectShelf(book) {
+    book.shelf = this.userShelf(book.id);
+    return book;
+  }
+
   render() {
     return (
       <div className="search-books-results">
@@ -33,7 +50,9 @@ class SearchResults extends React.Component {
           {(this.state.showingBooks !== []) && (
             this.state.showingBooks.map((book) => (
               <li key={book.id}>
-                <Book book={book} onUpdateBook={this.props.onUpdateBook} />
+                <Book
+                  book={this.updateToCorrectShelf(book)} onUpdateBook={this.props.onUpdateBook}
+                />
               </li>
             ))
           )}

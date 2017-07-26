@@ -21,6 +21,7 @@ class Search extends React.Component {
         />
         <SearchResults
           query={this.state.query}
+          userBooks={this.props.userBooks}
           onUpdateBook={this.props.onUpdateBook}
         />
       </div>
