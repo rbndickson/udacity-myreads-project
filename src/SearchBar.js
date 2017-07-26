@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
             type="text"
             placeholder="Search by title or author"
             value={this.props.query}
-            onChange={(e) => { this.props.onUpdateQuery(e.target.value) }}
+            onChange={(e) => { this.props.onUpdateSearchPage(e.target.value) }}
           />
         </div>
       </div>
