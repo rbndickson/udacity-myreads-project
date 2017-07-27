@@ -17,22 +17,32 @@ class BooksApp extends React.Component {
     })
   }
 
+  stateContiansBook(bookID) {
+    let bookIndex = this.state.books.findIndex((book) => {
+      return bookID === book.id
+    });
+
+    return bookIndex !== -1;
+  }
+
   updateBook(book, shelf) {
     if (shelf === 'none') {
-      this.removeBook(book)
-    } else if (!this.state.books.includes(book)) {
+      this.removeBook(book.id)
+    } else if (!this.stateContiansBook(book.id)) {
+      console.log('adding book')
       this.addBook(book, shelf)
     } else {
-      this.changeShelf(book, shelf)
+      console.log('changing book')
+      this.changeShelf(book.id, shelf)
     }
 
     BooksAPI.update(book, shelf)
   }
 
-  changeShelf(book, shelf) {
+  changeShelf(bookID, shelf) {
     this.setState(state => ({
       books: state.books.map((b) => {
-        if (b.id === book.id) { b.shelf = shelf; }
+        if (b.id === bookID) { b.shelf = shelf; }
         return b;
       })
     }))
@@ -45,9 +55,9 @@ class BooksApp extends React.Component {
     }))
   }
 
-  removeBook(book) {
+  removeBook(bookID) {
     this.setState((state) => ({
-      books: state.books.filter((b) => b.id !== book.id)
+      books: state.books.filter((b) => b.id !== bookID)
     }))
   }
 
