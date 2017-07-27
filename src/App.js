@@ -7,19 +7,19 @@ import Search from './Search'
 
 class BooksApp extends React.Component {
   state = {
-    books: [],
+    books: []
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       // this.setState({ books: books }) shorthand:
-      this.setState({ books })
-    })
+      this.setState({ books });
+    });
   }
 
   stateContiansBook(bookID) {
     let bookIndex = this.state.books.findIndex((book) => {
-      return bookID === book.id
+      return bookID === book.id;
     });
 
     return bookIndex !== -1;
@@ -27,38 +27,36 @@ class BooksApp extends React.Component {
 
   updateBook(book, shelf) {
     if (shelf === 'none') {
-      this.removeBook(book.id)
+      this.removeBook(book.id);
     } else if (!this.stateContiansBook(book.id)) {
-      console.log('adding book')
-      this.addBook(book, shelf)
+      this.addBook(book, shelf);
     } else {
-      console.log('changing book')
-      this.changeShelf(book.id, shelf)
+      this.changeShelf(book.id, shelf);
     }
 
-    BooksAPI.update(book, shelf)
+    BooksAPI.update(book, shelf);
   }
 
   changeShelf(bookID, shelf) {
     this.setState(state => ({
-      books: state.books.map((b) => {
-        if (b.id === bookID) { b.shelf = shelf; }
-        return b;
+      books: state.books.map((book) => {
+        if (book.id === bookID) { book.shelf = shelf; }
+        return book;
       })
-    }))
+    }));
   }
 
   addBook(book, shelf) {
     book.shelf = shelf;
     this.setState(state => ({
       books: state.books.concat([ book ])
-    }))
+    }));
   }
 
   removeBook(bookID) {
     this.setState((state) => ({
       books: state.books.filter((b) => b.id !== bookID)
-    }))
+    }));
   }
 
   render() {

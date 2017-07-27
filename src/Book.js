@@ -7,9 +7,9 @@ class Book extends Component {
   }
 
   handleOnChange(book, e) {
-    // BooksAPI.update(this.props.book, e.target.value);
-    if (this.props.onUpdateBook)
-      this.props.onUpdateBook(book, e.target.value)
+    if (this.props.onUpdateBook) {
+      this.props.onUpdateBook(book, e.target.value);
+    }
   }
 
   render() {
