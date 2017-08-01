@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './App.css'
 
 const SearchBar = (props) => (
   <div className="search-books-bar">
