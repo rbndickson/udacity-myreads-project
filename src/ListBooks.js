@@ -11,6 +11,7 @@ class ListBooks extends React.Component {
 
   render() {
     const { books, onUpdateBook } = this.props;
+    
     return (
       <div className="list-books">
         <div className="list-books-title">
