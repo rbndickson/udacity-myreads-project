@@ -10,14 +10,27 @@ class ListBooks extends React.Component {
   }
 
   render() {
+    const { books, onUpdateBook } = this.props;
     return (
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <Bookshelf books={this.props.books} onUpdateBook={this.props.onUpdateBook} title="Currently Reading" value="currentlyReading" />
-        <Bookshelf books={this.props.books} onUpdateBook={this.props.onUpdateBook} title="Want to Read" value="wantToRead" />
-        <Bookshelf books={this.props.books} onUpdateBook={this.props.onUpdateBook} title="Read" value="read" />
+        <Bookshelf
+          books={books}
+          onUpdateBook={onUpdateBook}
+          title="Currently Reading"
+          shelfValue="currentlyReading" />
+        <Bookshelf
+          books={books}
+          onUpdateBook={onUpdateBook}
+          title="Want to Read"
+          shelfValue="wantToRead" />
+        <Bookshelf
+          books={books}
+          onUpdateBook={onUpdateBook}
+          title="Read"
+          shelfValue="read" />
         <div className="open-search">
           <Link to="/search">
             Add a book
