@@ -9,6 +9,8 @@ class SearchBar extends React.Component {
   }
 
   render() {
+    const { query, onUpdateSearchPage } = this.props;
+
     return (
       <div className="search-books-bar">
         <Link className="close-search" to="/">Close</Link>
@@ -16,8 +18,8 @@ class SearchBar extends React.Component {
           <input
             type="text"
             placeholder="Search by title or author"
-            value={this.props.query}
-            onChange={(e) => { this.props.onUpdateSearchPage(e.target.value) }}
+            value={query}
+            onChange={(e) => { onUpdateSearchPage(e.target.value) }}
           />
         </div>
       </div>

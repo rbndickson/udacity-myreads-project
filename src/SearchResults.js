@@ -26,14 +26,16 @@ class SearchResults extends React.Component {
   }
 
   render() {
+    const { queriedBooks, onUpdateBook } = this.props;
+    
     return (
       <div className="search-books-results">
         <ol className="books-grid">
-          {(this.props.queriedBooks !== []) && (
-            this.props.queriedBooks.map((book) => (
+          {(queriedBooks !== []) && (
+            queriedBooks.map((book) => (
               <li key={book.id}>
                 <Book
-                  book={this.updateToCorrectShelf(book)} onUpdateBook={this.props.onUpdateBook}
+                  book={this.updateToCorrectShelf(book)} onUpdateBook={onUpdateBook}
                 />
               </li>
             ))

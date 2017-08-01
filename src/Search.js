@@ -46,17 +46,20 @@ class Search extends React.Component {
   }
 
   render() {
+    const { userBooks, onUpdateBook } = this.props;
+    const { query, queriedBooks } = this.state;
+
     return (
       <div className="search-books">
         <SearchBar
-          query={this.state.query}
+          query={query}
           onUpdateSearchPage={this.updateSerachPage}
         />
         <SearchResults
-          query={this.state.query}
-          userBooks={this.props.userBooks}
-          queriedBooks={this.state.queriedBooks}
-          onUpdateBook={this.props.onUpdateBook}
+          query={query}
+          userBooks={userBooks}
+          queriedBooks={queriedBooks}
+          onUpdateBook={onUpdateBook}
         />
       </div>
     )
