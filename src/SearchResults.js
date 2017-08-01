@@ -1,8 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './App.css'
 import Book from './Book'
 
 class SearchResults extends React.Component {
+  static propTypes = {
+    queriedBooks: PropTypes.array.isRequired,
+    onUpdateBook: PropTypes.func.isRequired
+  }
+
   userShelf(id) {
     let userShelf = 'none';
 
