@@ -60,11 +60,13 @@ class BooksApp extends React.Component {
   }
 
   render() {
+    const { books } = this.state;
+
     return (
       <div className="app">
         <Route path="/search" render={() => (
           <Search
-            userBooks={this.state.books}
+            userBooks={books}
             onUpdateBook={(book, shelf) => {
               this.updateBook(book, shelf)
             }}
@@ -72,7 +74,7 @@ class BooksApp extends React.Component {
         )}/>
         <Route exact path="/" render={() => (
           <ListBooks
-            books={this.state.books}
+            books={books}
             onUpdateBook={(book, shelf) => {
               this.updateBook(book, shelf)
             }}
