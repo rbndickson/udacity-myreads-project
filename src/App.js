@@ -17,7 +17,7 @@ class BooksApp extends React.Component {
     });
   }
 
-  stateContiansBook(bookID) {
+  stateContainsBook(bookID) {
     let bookIndex = this.state.books.findIndex((book) => {
       return bookID === book.id;
     });
@@ -28,7 +28,7 @@ class BooksApp extends React.Component {
   updateBook(book, shelf) {
     if (shelf === 'none') {
       this.removeBook(book.id);
-    } else if (!this.stateContiansBook(book.id)) {
+    } else if (!this.stateContainsBook(book.id)) {
       this.addBook(book, shelf);
     } else {
       this.changeShelf(book.id, shelf);
