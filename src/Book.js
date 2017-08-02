@@ -13,14 +13,16 @@ class Book extends Component {
   }
 
   render() {
+    const { book } = this.props;
+
     return (
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.smallThumbnail})` }}></div>
           <div className="book-shelf-changer">
             <select
-              defaultValue={this.props.book.shelf}
-              onChange={(e) => this.handleOnChange(this.props.book, e)}
+              defaultValue={book.shelf}
+              onChange={(e) => this.handleOnChange(book, e)}
             >
               <option value="none" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
@@ -30,8 +32,8 @@ class Book extends Component {
             </select>
           </div>
         </div>
-        <div className="book-title">{ this.props.book.title }</div>
-        <div className="book-authors">{ this.props.book.author }</div>
+        <div className="book-title">{ book.title }</div>
+        <div className="book-authors">{ book.author }</div>
       </div>
     )
   }
